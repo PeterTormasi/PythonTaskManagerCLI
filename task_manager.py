@@ -4,7 +4,7 @@ tasks = storage.load_tasks()
 
 def add_task(taskname):
     tasks.append({
-        "id":len(tasks)+1, 
+        "id":tasks[-1]["id"]+1 if len(tasks) > 0 else 1, 
         "name": taskname,
         "completed": False
         })
