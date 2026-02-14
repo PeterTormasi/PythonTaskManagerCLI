@@ -5,13 +5,12 @@ while (True):
     action = input("")
 
     if action == "1": 
-        taskmanager.add_task(input("Feladat neve: "))
+        taskmanager.add_task(input("Új feladat neve: "))
     elif action == "2":
         taskmanager.print_tasks()
     elif action == "3":
-        taskmanager.mark_complete(input("Feladat neve: "))
+        taskmanager.mark_complete(input("Feladat azonosítója: "))
     elif action == "4": 
-        taskmanager.delete_task(input("Feladat neve: "))
+        taskmanager.delete_task(input("Feladat azonosítója: "))
     elif action == "5":
-        taskmanager.save_tasks()
         break

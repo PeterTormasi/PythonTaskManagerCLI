@@ -1,28 +1,16 @@
 import storage as storage
 
-tasks = storage.load_tasks()
-
 def add_task(taskname):
-    tasks.append({
-        "id":tasks[-1]["id"]+1 if len(tasks) > 0 else 1, 
-        "name": taskname,
-        "completed": False
-        })
+    storage.add_task(taskname)
 
 def print_tasks():
+    tasks = storage.load_tasks()
     if len(tasks) == 0: print("Nincs feladat!")
     for i in tasks:
-        print(f"[{'✔' if i['completed'] == True else ' '}] {i['id']} - {i['name']}")
+        print(f"[{'✔' if i[2] == 1 else ' '}] {i[0]} - {i[1]}")
 
-def mark_complete(taskname):
-    for i in tasks:
-        if i["name"] == taskname:
-            i["completed"] = True
+def mark_complete(task_id):
+    storage.complete_task(task_id)
 
-def delete_task(taskname):
-    for i in tasks:
-        if i["name"] == taskname:
-            tasks.remove(i)
-
-def save_tasks():
-    storage.save_tasks(tasks)
+def delete_task(task_id):
+    storage.delete_task(task_id)
